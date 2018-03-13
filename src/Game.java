@@ -37,6 +37,13 @@ public class Game {
         return isHit;
     }
 
+    public boolean applyGuess(String letters){
+        if(letters.length() == 0){
+            throw new IllegalArgumentException("No letter found.");
+        }
+        return applyGuess(letters.charAt(0));
+    }
+
     public String getCurrentProgress(){
         StringBuilder progress = new StringBuilder();
         for(char letter : answer.toCharArray()){
@@ -49,5 +56,11 @@ public class Game {
         return progress.toString();
     }
 
+    public boolean isWon(){
+        return getCurrentProgress().indexOf('-') == -1;
+    }
 
+    public String getAnswer() {
+        return answer;
+    }
 }
